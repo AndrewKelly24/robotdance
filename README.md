@@ -1,2 +1,2 @@
-# robotdance
-SIT192 Credit Project Robot Dance Game
+# RobotDodge
+SIT192 Credit Project Robot Dodge Game

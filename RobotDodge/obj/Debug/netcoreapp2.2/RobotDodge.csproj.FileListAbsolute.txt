@@ -1,0 +1,11 @@
+C:\232\RobotDodge\bin\Debug\netcoreapp2.2\RobotDodge.deps.json
+C:\232\RobotDodge\bin\Debug\netcoreapp2.2\RobotDodge.runtimeconfig.json
+C:\232\RobotDodge\bin\Debug\netcoreapp2.2\RobotDodge.runtimeconfig.dev.json
+C:\232\RobotDodge\bin\Debug\netcoreapp2.2\RobotDodge.dll
+C:\232\RobotDodge\bin\Debug\netcoreapp2.2\RobotDodge.pdb
+C:\232\RobotDodge\obj\Debug\netcoreapp2.2\RobotDodge.csprojAssemblyReference.cache
+C:\232\RobotDodge\obj\Debug\netcoreapp2.2\RobotDodge.csproj.CoreCompileInputs.cache
+C:\232\RobotDodge\obj\Debug\netcoreapp2.2\RobotDodge.AssemblyInfoInputs.cache
+C:\232\RobotDodge\obj\Debug\netcoreapp2.2\RobotDodge.AssemblyInfo.cs
+C:\232\RobotDodge\obj\Debug\netcoreapp2.2\RobotDodge.dll
+C:\232\RobotDodge\obj\Debug\netcoreapp2.2\RobotDodge.pdb

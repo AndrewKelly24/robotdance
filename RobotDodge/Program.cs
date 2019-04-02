@@ -6,18 +6,14 @@ public class Program
     public static void Main()
     {
         Window gameWindow = new Window("Robot Dodge!", 800, 600);
-        Player playerOne = new Player(gameWindow);        
+        RobotDodge robotDodge = new RobotDodge(gameWindow);
 
-
-        //SplashKit.Delay(5000);
-
-        while (!SplashKit.QuitRequested() && playerOne.Quit != true)
+        while (!SplashKit.QuitRequested() && !robotDodge.Quit)
         {
-            gameWindow.Clear(Color.White);
-            playerOne.Draw();
-            playerOne.HandleInput();
-            playerOne.StayOnWindow(gameWindow);
-            gameWindow.Refresh(60);
+            SplashKit.ProcessEvents();
+            robotDodge.HandelInput();
+            robotDodge.Update();
+            robotDodge.Draw();            
         }
     }
-}
+}   

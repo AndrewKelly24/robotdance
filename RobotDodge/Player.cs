@@ -8,7 +8,7 @@ public class Player
     public double x { get; private set; }
     public double y { get; private set; }
 
-    public bool Quit { get; private set; }    
+    public bool Quit { get; private set; }
 
     public int Width
     {
@@ -26,6 +26,7 @@ public class Player
         }
     }
 
+    public int health = 5;
     public Player(Window gameWindow)
     {
         _PlayerBitmap = new Bitmap("player", "Player.png");
@@ -43,8 +44,8 @@ public class Player
     {
         const int SPEED = 5;
 
-        SplashKit.ProcessEvents();
-        if(SplashKit.KeyDown(KeyCode.LeftKey))
+        
+        if (SplashKit.KeyDown(KeyCode.LeftKey))
         {
             x -= SPEED;
         }
@@ -52,7 +53,7 @@ public class Player
         {
             x += SPEED;
         }
-        if(SplashKit.KeyDown(KeyCode.UpKey))
+        if (SplashKit.KeyDown(KeyCode.UpKey))
         {
             y -= SPEED;
         }
@@ -89,4 +90,20 @@ public class Player
         }
     }
 
+    public bool CollidedWith(Robot robot)
+    {
+        return _PlayerBitmap.CircleCollision(x, y, robot.CollisionCircle);
+    }
+
+    public void DrawHealth()
+    {
+        
+        SplashKit.FillRectangle(Color.Red, x, y, 50, 10);
+        SplashKit.FillRectangle(Color.Red, x, y, 10, 50);
+    }
+    public void UpdateHealth()
+    {
+        //If player collison == true then health--
+        //If health == 0 then Quit==true
+    }
 }

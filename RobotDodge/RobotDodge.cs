@@ -47,6 +47,7 @@ public class RobotDodge
     public void Update()
     {
         CheckCollisions();
+        _player.UpdateHealth();
 
         for (int i = 0; i < _Robots.Count; i++)
         {
@@ -84,6 +85,10 @@ public class RobotDodge
             _Robots.Remove(_removedRobots[i]);
         }
     }
+    private void OffSceen()
+    {
+
+    }
     private void BulletCollision(List<Bullet> _removedBullets, List<Robot> _removedRobots)
     {
         for (int i = 0; i < _Bullets.Count; i++)
@@ -114,6 +119,8 @@ public class RobotDodge
     public void Draw()
     {
         _gameWindow.Clear(Color.White);
+
+        _player.DrawHealth(_gameWindow);
         for (int i = 0; i < _Robots.Count; i++)
         {
             _Robots[i].Draw();
@@ -124,6 +131,7 @@ public class RobotDodge
         {
             _Bullets[i].Draw();
         }
+        
         _gameWindow.Refresh(60);
 
     }
@@ -138,7 +146,10 @@ public class RobotDodge
 
     public Robot RandomRobot(Window _gameWindow, Player _player)
     {
-        return new Robot(_gameWindow, _player);
+        if (SplashKit.Rnd() < 0.5)
+            return new Roundy(_gameWindow, _player);
+        else
+            return new Boxy(_gameWindow, _player);
     }
 
     public Bullet FireBullet(Window _gameWindow, Player _player)

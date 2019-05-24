@@ -4,6 +4,7 @@ using SplashKitSDK;
 public class Player
 {
     private Bitmap _PlayerBitmap;
+    private Bitmap _HeartBitmap;
 
     public double x { get; private set; }
     public double y { get; private set; }
@@ -26,18 +27,20 @@ public class Player
         }
     }
 
-    public int health = 5;
+    public int health;
     public Player(Window gameWindow)
     {
         _PlayerBitmap = new Bitmap("player", "Player.png");
+        _HeartBitmap = new Bitmap("heart", "heart.png");
         x = (gameWindow.Width / 2) - _PlayerBitmap.Width / 2;
         y = (gameWindow.Height / 2) - _PlayerBitmap.Height / 2;
         Quit = false;
+        health = 5;
     }
 
     public void Draw()
     {
-        _PlayerBitmap.Draw(x, y);
+        _PlayerBitmap.Draw(x, y);        
     }
 
     public void HandleInput()
@@ -92,18 +95,28 @@ public class Player
 
     public bool CollidedWith(Robot robot)
     {
-        return _PlayerBitmap.CircleCollision(x, y, robot.CollisionCircle);
+        bool collide = _PlayerBitmap.CircleCollision(x, y, robot.CollisionCircle);    
+
+        if (collide)
+        {
+            health--;
+        }
+        return collide;    
     }
 
-    public void DrawHealth()
+
+    public void DrawHealth(Window gameWindow)
     {
-        
-        SplashKit.FillRectangle(Color.Red, x, y, 50, 10);
-        SplashKit.FillRectangle(Color.Red, x, y, 10, 50);
+        int heart_y = 20;
+        int x_offset = 20;
+        for (int i = 1; i <= health; i++)
+        {
+            _HeartBitmap.Draw(gameWindow.Width - (_HeartBitmap.Width * i + x_offset * i), heart_y);
+        }
     }
     public void UpdateHealth()
     {
-        //If player collison == true then health--
-        //If health == 0 then Quit==true
+        if (health == 0) 
+            Quit = true;
     }
 }
